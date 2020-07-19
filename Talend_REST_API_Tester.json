@@ -1,0 +1,703 @@
+{
+  "version": 6,
+  "entities": [
+    {
+      "entity": {
+        "type": "Project",
+        "id": "10a3c22f-346f-44e9-999f-183bd3d36f81",
+        "name": "smart parking"
+      },
+      "children": [
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "requestBody": true,
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+              "name": "POST"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "name",
+                    "value": "B16"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "x_coordinate",
+                    "value": "10"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "y_coordinate",
+                    "value": "11"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "lot_id",
+                    "value": "2"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "sensor_id",
+                    "value": "16"
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "127.0.0.1:8080",
+              "path": "/bay/add"
+            },
+            "id": "d008a9d5-c02c-45b7-bb85-f770521b962a",
+            "name": "add bay",
+            "headers": [
+              {
+                "enabled": true,
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ]
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "requestBody": true,
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+              "name": "POST"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "name",
+                    "value": "L5"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "latitude",
+                    "value": "15.321321"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "longitude",
+                    "value": "12.456565"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "gateway_id",
+                    "value": "3"
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "127.0.0.1:8080",
+              "path": "/lot/add"
+            },
+            "id": "8dfe1635-4ed3-43bf-ba15-1a6435d33805",
+            "name": "add lot",
+            "headers": [
+              {
+                "enabled": true,
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ]
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "requestBody": true,
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+              "name": "POST"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "uuid",
+                    "value": "1c0e8216-2d26-4ba2-9a6b-3071495051a2"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "is_occupied",
+                    "value": "0"
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "127.0.0.1:8080",
+              "path": "/sensor/add"
+            },
+            "id": "909ad70f-9059-467c-afed-6bb499fb69c5",
+            "name": "add sensor",
+            "headers": [
+              {
+                "enabled": true,
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ]
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "requestBody": true,
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+              "name": "POST"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "sensor_id",
+                    "value": "1"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "timestamp",
+                    "value": "2020-07-19T13:42:35"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "is_occupied",
+                    "value": "1"
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "127.0.0.1:8080",
+              "path": "/data"
+            },
+            "id": "572c31f1-6df0-45e7-937a-b3464efd3783",
+            "name": "add status",
+            "headers": [
+              {
+                "enabled": true,
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ]
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.5",
+              "name": "DELETE"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "type": "Text",
+                    "name": "id",
+                    "value": "123"
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "127.0.0.1:8080",
+              "path": "/test/123"
+            },
+            "id": "bd2a44f3-ee4c-40ff-b9fb-b71f03a3b20b",
+            "name": "express delete",
+            "headers": []
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+              "name": "GET"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "type": "Text",
+                    "name": "id",
+                    "value": "123"
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "127.0.0.1:8080",
+              "path": "/test/2"
+            },
+            "id": "93b4a8ff-750d-4adf-82d6-7e99ca53c930",
+            "name": "express get",
+            "headers": []
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+              "name": "GET"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "type": "Text",
+                    "name": "id",
+                    "value": "123"
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "127.0.0.1:8080",
+              "path": "/test/123"
+            },
+            "id": "4908d716-27da-4ed4-9457-11a959d35c03",
+            "name": "express get params",
+            "headers": []
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+              "name": "GET"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "name",
+                    "value": "B16"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "x_coordinate",
+                    "value": "10"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "y_coordinate",
+                    "value": "11"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "lot_id",
+                    "value": "2"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "sensor_id",
+                    "value": "16"
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "127.0.0.1:8080",
+              "path": "/bay/L2/B1"
+            },
+            "id": "30be3ed3-c964-433f-8b00-8d456694a146",
+            "name": "fetch bay by global name",
+            "headers": []
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+              "name": "GET"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "name",
+                    "value": "B16"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "x_coordinate",
+                    "value": "10"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "y_coordinate",
+                    "value": "11"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "lot_id",
+                    "value": "2"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "sensor_id",
+                    "value": "16"
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "127.0.0.1:8080",
+              "path": "/bay/B1"
+            },
+            "id": "40a5816b-9896-4138-b979-a9b6f4ccd63b",
+            "name": "get bay",
+            "headers": []
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+              "name": "GET"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "name",
+                    "value": "L5"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "latitude",
+                    "value": "15.321321"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "longitude",
+                    "value": "12.456565"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "gateway_id",
+                    "value": "3"
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "127.0.0.1:8080",
+              "path": "/lot/L4"
+            },
+            "id": "068f9452-61e7-46fa-8a27-3aa07c89b3e8",
+            "name": "get lot",
+            "headers": []
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+              "name": "GET"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "name",
+                    "value": "L5"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "latitude",
+                    "value": "15.321321"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "longitude",
+                    "value": "12.456565"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "gateway_id",
+                    "value": "3"
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "127.0.0.1:8080",
+              "path": "/lot"
+            },
+            "id": "adedf005-44df-4114-a69c-142739cc2bae",
+            "name": "get lots",
+            "headers": []
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+              "name": "GET"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "uuid",
+                    "value": "57834963-27c6-4c89-ba9c-de9efcd4b6dd"
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "127.0.0.1:8080",
+              "path": "/sensor/get/45e0c726-4d19-4029-902b-ece36bceb3c1"
+            },
+            "id": "c40b6854-96ac-4414-8ee0-e45140e155c4",
+            "name": "get sensor",
+            "headers": []
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "requestBody": true,
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.4",
+              "name": "PUT"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": [
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "uuid",
+                    "value": "12ae31c5-92d1-4e3c-b659-37f78452ea89"
+                  },
+                  {
+                    "enabled": true,
+                    "type": "Text",
+                    "name": "is_occupied",
+                    "value": "0"
+                  }
+                ]
+              },
+              "bodyType": "Form"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "127.0.0.1:8080",
+              "path": "/sensor/update"
+            },
+            "id": "e35c563a-7421-4fb6-a544-75ebc6b6476c",
+            "name": "update sensor",
+            "headers": [
+              {
+                "enabled": true,
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
