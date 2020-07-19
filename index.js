@@ -8,6 +8,9 @@ dotenv.config({ path: './config.env' });
 // Import routes
 const routes = require('./routes/testRoutes')
 const sensorRouter = require('./routes/sensorRoutes')
+const statusRouter = require('./routes/statusRoutes')
+const lotRouter = require('./routes/lotRoutes')
+const bayRouter = require('./routes/bayRoutes')
 
 const app = express()
 
@@ -20,7 +23,11 @@ app.use(express.urlencoded({ extended: true })) // for accepting form data
 
 
 app.use('/sensor', sensorRouter)
-app.use('/test', routes)
+app.use('/data', statusRouter)
+app.use('/lot', lotRouter)
+app.use('/bay', bayRouter)
+
+//app.use('/test', routes)
 
 
 // Handling 404 page

@@ -39,6 +39,8 @@ db.one = (id) => {
 	})
 }
 
+
+
 db.addSensor = (uuid, is_occupied) => {
 	return new Promise((resolve, reject) => {
 		connPool.query('INSERT INTO sensor (`uuid`, `is_occupied`) VALUES (?, ?) ', [uuid, is_occupied], (err, results) => {
@@ -95,5 +97,161 @@ db.getSensor = (uuid) => {
 		})
 	})
 }
+
+
+
+db.addStatus = (sensor_id, timestamp, is_occupied) => {
+	return new Promise((resolve, reject) => {
+		connPool.query('INSERT INTO status (`sensor_id`, `timestamp`, `is_occupied`) VALUES (?, ?, ?) ', 
+													[sensor_id, timestamp, is_occupied], (err, results) => {
+			result = {
+				status: 'error'
+			}
+
+			if (err) {
+				//return reject(err)
+				return resolve(result)
+			}
+
+			result.status = results.affectedRows == 1 ? 'success' : 'error';
+			return resolve(result)
+		})
+	})
+}
+
+
+db.addLot = (name, latitude, longitude, gateway_id) => {
+	return new Promise((resolve, reject) => {
+		connPool.query('INSERT INTO `lot` (`name`, `latitude`, `longitude`, `gateway_id`) \
+						SELECT ?, ?, ?, ? FROM dual \
+						WHERE NOT EXISTS (SELECT `gateway_id` FROM `lot` WHERE gateway_id = ?)', 
+							[name, latitude, longitude, gateway_id, gateway_id], (err, results) => {
+			result = {
+				status: 'error'
+			}
+
+			if (err) {
+				//return reject(err)
+				console.log(err)
+				return resolve(result)
+			}
+
+			result.status = results.affectedRows == 1 ? 'success' : 'error';
+			return resolve(result)
+		})
+	})
+}
+
+db.getLots = () => {
+	return new Promise((resolve, reject) => {
+		connPool.query('SELECT * FROM lot', (err, results) => {
+			result = {
+				data: [],
+				status: 'error'
+			}
+
+			if (err) {
+				//return reject(err)
+				return resolve(result)
+			}
+
+			result.data = results
+			result.status = results.length > 0 ? 'success' : 'error';
+
+			return resolve(result)
+		})
+	})
+}
+
+db.getLot = (name) => {
+	return new Promise((resolve, reject) => {
+		connPool.query('SELECT * FROM lot WHERE `name` = ?', name, (err, results) => {
+			result = {
+				data: [],
+				status: 'error'
+			}
+
+			if (err) {
+				//return reject(err)
+				return resolve(result)
+			}
+
+			result.data = results[0]
+			result.status = results.length > 0 ? 'success' : 'error';
+
+			return resolve(result)
+		})
+	})
+}
+
+db.getBayByGlobalName = (lot_name, bay_name) => {
+	return new Promise((resolve, reject) => {
+		connPool.query('SELECT * FROM lot l, bay b \
+						WHERE b.lot_id = l.id AND l.name = ? AND b.name = ? ', 
+						[lot_name, bay_name], (err, results) => {
+			result = {
+				data: [],
+				status: 'error'
+			}
+
+			if (err) {
+				//return reject(err)
+				return resolve(result)
+			}
+
+			result.data = results[0]
+			result.status = results.length > 0 ? 'success' : 'error';
+
+			return resolve(result)
+		})
+	})
+}
+
+
+
+db.addBay = (name, x_coordinate, y_coordinate, lot_id, sensor_id) => {
+	return new Promise((resolve, reject) => {
+		connPool.query('INSERT INTO `bay` (`name`, `x_coordinate`, `y_coordinate`, `lot_id`, `sensor_id`) \
+						SELECT ?, ?, ?, ?, ? FROM dual \
+						WHERE NOT EXISTS (SELECT `sensor_id` FROM `bay` WHERE sensor_id = ?)', 
+						[name, x_coordinate, y_coordinate, lot_id, sensor_id, sensor_id], (err, results) => {
+			result = {
+				status: 'error'
+			}
+
+			if (err) {
+				//return reject(err)
+				return resolve(result)
+			}
+
+			result.status = results.affectedRows == 1 ? 'success' : 'error';
+			return resolve(result)
+		})
+	})
+}
+
+db.getBay = (name) => {
+	return new Promise((resolve, reject) => {
+		connPool.query('SELECT * FROM bay WHERE `name` = ?', name, (err, results) => {
+			result = {
+				data: [],
+				status: 'error'
+			}
+
+			if (err) {
+				//return reject(err)
+				return resolve(result)
+			}
+
+			result.data = results
+			result.status = results.length > 0 ? 'success' : 'error';
+
+			return resolve(result)
+		})
+	})
+}
+
+
+
 
 module.exports = db
