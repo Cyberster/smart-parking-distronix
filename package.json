@@ -1,0 +1,23 @@
+{
+  "name": "in.arpandas.smartparking",
+  "version": "1.0.0",
+  "description": "Smart Parking application for Distronix recruitment",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon index.js -w index"
+  },
+  "keywords": [
+    "smart",
+    "parking",
+    "iot"
+  ],
+  "author": "Arpan Das",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "uuid": "^8.2.0"
+  },
+  "PORT": "8080"
+}
