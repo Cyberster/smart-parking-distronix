@@ -2,6 +2,12 @@
 
 A smart parking application that shows the status of spots in a parking lot.
 
+## Used Technologies
+
+- Node.js
+- Express.js
+- MySQL Database
+
 ## Database Schema
 
 ### Link to the Schema Design
@@ -106,6 +112,12 @@ There are four different routes available in this application as follows
 
 #### Fetch list of all parking lots
 
+##### *Request Syntax:*
+
+```
+GET /lot
+```
+
 ##### *Example Request:*
 
 ```
@@ -149,10 +161,16 @@ GET /lot
 
 #### Fetch lot details along with list of all bays within that lot
 
-##### *Example Request:*
+##### *Request Syntax:*
 
 ```
 GET /lot/:lot_name
+```
+
+##### *Example Request:*
+
+```
+GET /lot/L1
 ```
 
 ##### *Example Response:*
@@ -235,10 +253,16 @@ GET /lot/:lot_name
 
 #### Fetch bay details by global name
 
-##### *Example Request:*
+##### *Request Syntax:*
 
 ```
 GET /bay/:lot_name/:bay_name
+```
+
+##### *Example Request:*
+
+```
+GET /bay/L1/B1
 ```
 
 ##### *Example Response:*
@@ -272,11 +296,20 @@ GET /bay/:lot_name/:bay_name
 
 #### Insert a new data point corresponding to a sensor
 
+##### *Request Syntax:*
+
+```
+POST /data
+
+Parammeters: sensor_id, timestamp, is_occupied
+```
+
 ##### *Example Request:*
 
 ```
 POST /data
-Parammeters: sensor_id, timestamp, is_occupied
+
+sensor_id=5&timestamp=2020-07-20T04:41:44+00:00&is_occupied=0
 ```
 
 ##### *Example Response:*
@@ -301,11 +334,20 @@ Parammeters: sensor_id, timestamp, is_occupied
 
 #### Add new bay 
 
+##### *Request Syntax:*
+
+```
+POST /bay/add
+
+Parammeters: name, x_coordinate, y_coordinate, lot_id, sensor_id
+```
+
 ##### *Example Request:*
 
 ```
 POST /bay/add
-Parammeters: name, x_coordinate, y_coordinate, lot_id, sensor_id
+
+name=B5&x_coordinate=10.0&y_coordinate=12.0&lot_id=1&sensor_id=5
 ```
 
 ##### *Example Response:*
@@ -328,11 +370,20 @@ Parammeters: name, x_coordinate, y_coordinate, lot_id, sensor_id
 
 #### Add new lot 
 
+##### *Request Syntax:*
+
+```
+POST /lot/add
+
+Parammeters: name, latitude, longitude, gateway_id
+```
+
 ##### *Example Request:*
 
 ```
 POST /lot/add
-Parammeters: name, latitude, longitude, gateway_id
+
+name=L5&latitude=15.321321&longitude=12.9191555&gateway_id=2
 ```
 
 ##### *Example Response:*
@@ -355,11 +406,20 @@ Parammeters: name, latitude, longitude, gateway_id
 
 #### Add new sensor 
 
+##### *Request Syntax:*
+
+```
+POST /sensor/add
+
+Parammeters: uuid, is_occupied
+```
+
 ##### *Example Request:*
 
 ```
 POST /sensor/add
-Parammeters: uuid, is_occupied
+
+uuid=0fca8705-af70-4e45-b917-5917623f4f77&is_occupied=1
 ```
 
 ##### *Example Response:*
@@ -382,10 +442,16 @@ Parammeters: uuid, is_occupied
 
 #### Get bay by name
 
-##### *Example Request:*
+##### *Request Syntax:*
 
 ```
 GET /bay/:name
+```
+
+##### *Example Request:*
+
+```
+GET /bay/B1
 ```
 
 ##### *Example Response:*
@@ -427,10 +493,16 @@ GET /bay/:name
 
 #### Get sensor by id
 
-##### *Example Request:*
+##### *Request Syntax:*
 
 ```
 GET /sensor/:id
+```
+
+##### *Example Request:*
+
+```
+GET /sensor/1
 ```
 
 ##### *Example Response:*
@@ -455,11 +527,20 @@ GET /sensor/:id
 
 #### Update sensor
 
+##### *Request Syntax:*
+
+```
+PUT /sensor/update
+
+Parammeters: id, is_occupied
+```
+
 ##### *Example Request:*
 
 ```
 PUT /sensor/update
-Parammeters: id, is_occupied
+
+id=0&is_occupied=1
 ```
 ###### Success
 
