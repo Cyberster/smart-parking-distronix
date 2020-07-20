@@ -425,12 +425,12 @@ GET /bay/:name
 }
 ```
 
-#### Get sensor by name
+#### Get sensor by id
 
 ##### *Example Request:*
 
 ```
-GET /lot/:name
+GET /sensor/:id
 ```
 
 ##### *Example Response:*
@@ -439,13 +439,7 @@ GET /lot/:name
 
 ```json
 {
-	"data":{
-		"id": 4,
-		"name": "L4",
-		"latitude": 15.321321,
-		"longitude": 12.456565,
-		"gateway_id": 3
-	},
+	"is_occupied": 1,
 	"status": "success"
 }
 ```
