@@ -149,11 +149,11 @@ db.getLots = () => {
 }
 
 // Get single lot details from database
-db.getLot = (name) => {
+db.getSingleLot = (name) => {
 	return new Promise((resolve, reject) => {
-		connPool.query('SELECT * FROM lot l, bay b WHERE b.lot_id = l.id AND l.name = ?', name, (err, results) => {
-			result = {
-				data: [],
+		connPool.query('SELECT * FROM lot WHERE `name` = ?', name, (err, results) => {
+			let result = {
+				lot: [],
 				status: 'error'
 			}
 
@@ -162,8 +162,42 @@ db.getLot = (name) => {
 				return resolve(result)
 			}
 
+			result.lot = results[0]
+			result.status = results.length > 0 ? 'success' : 'error';
+
+			return resolve(result)
+		})
+	})
+}
+
+// Fetch lot details along with list of all bays within that lot
+db.getLot = async (name) => {
+	let result = {
+		data: [],
+		status: 'error'
+	}
+
+	try {
+		let singleLot = await db.getSingleLot(name)
+		delete singleLot.status
+        result.data = singleLot
+
+    } catch (e) {
+        console.log(e)
+        res.sendStatus(500)
+    }
+
+	return new Promise((resolve, reject) => {
+		connPool.query('SELECT b.name, b.x_coordinate, b.y_coordinate, b.sensor_id\
+						FROM lot l, bay b WHERE b.lot_id = l.id AND l.name = ?', name, (err, results) => {
+
+			if (err) {
+				//return reject(err)
+				return resolve(result)
+			}
+
 			if (results.length > 0) {
-				result.data = results
+				result.data.bays = results
 				result.status = 'success'
 			}			
 
