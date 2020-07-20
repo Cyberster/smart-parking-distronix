@@ -15,31 +15,6 @@ const connPool = mysql.createPool({
 
 let db = {}
 
-db.all = () => {
-	return new Promise((resolve, reject) => {
-		connPool.query('SELECT * FROM sensor', (err, results) => {
-			if (err) {
-				return reject(err)
-			}
-
-			return resolve(results)
-		})
-	})
-}
-
-db.one = (id) => {
-	return new Promise((resolve, reject) => {
-		connPool.query('SELECT * FROM sensor WHERE id = ?', [id], (err, results) => {
-			if (err) {
-				return reject(err)
-			}
-
-			return resolve(results[0])
-		})
-	})
-}
-
-
 
 db.addSensor = (uuid, is_occupied) => {
 	return new Promise((resolve, reject) => {
@@ -59,9 +34,9 @@ db.addSensor = (uuid, is_occupied) => {
 	})
 }
 
-db.updateSensor = (uuid, is_occupied) => {
+db.updateSensor = (id, is_occupied) => {
 	return new Promise((resolve, reject) => {
-		connPool.query('UPDATE sensor SET `is_occupied` = ? WHERE `uuid` = ?', [is_occupied, uuid], (err, results) => {
+		connPool.query('UPDATE sensor SET `is_occupied` = ? WHERE `id` = ?', [is_occupied, id], (err, results) => {
 			result = {
 				status: 'error'
 			}
@@ -71,15 +46,16 @@ db.updateSensor = (uuid, is_occupied) => {
 				return resolve(result)
 			}
 
+			console.log(results.affectedRows)
 			result.status = results.affectedRows == 1 ? 'success' : 'error';
 			return resolve(result)
 		})
 	})
 }
 
-db.getSensor = (uuid) => {
+db.getSensor = (id) => {
 	return new Promise((resolve, reject) => {
-		connPool.query('SELECT `is_occupied` FROM sensor WHERE `uuid` = ?', [uuid], (err, results) => {
+		connPool.query('SELECT `is_occupied` FROM `sensor` WHERE `id` = ?', [id], (err, results) => {
 			result = {
 				is_occupied: 0,
 				status: 'error'
@@ -90,8 +66,10 @@ db.getSensor = (uuid) => {
 				return resolve(result)
 			}
 
-			result.is_occupied = results[0].is_occupied
-			result.status = 'success'
+			if (results.length > 0) {
+				result.is_occupied = results[0].is_occupied
+				result.status = 'success'
+			}
 
 			return resolve(result)
 		})

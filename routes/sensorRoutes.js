@@ -24,11 +24,11 @@ sensorRouter.post('/add', async (req, res, next) => {
 sensorRouter.put('/update', async (req, res, next) => {
     console.log(req.body)
 
-    let uuid = req.param('uuid');
+    let id = req.param('id');
     let is_occupied = req.param('is_occupied');
 
     try {
-        let result = await db.updateSensor(uuid, is_occupied)
+        let result = await db.updateSensor(id, is_occupied)
 		res.json(result)
     } catch (e) {
         console.log(e)
@@ -36,14 +36,14 @@ sensorRouter.put('/update', async (req, res, next) => {
     }
 })
 
-// Get existing sensor value
-sensorRouter.get('/get/:uuid', async (req, res, next) => {
+// Get existing sensor value by ID
+sensorRouter.get('/get/:id', async (req, res, next) => {
     console.log(req.body)
 
-    let uuid = req.params.uuid
+    let id = req.params.id
 
     try {
-        let result = await db.getSensor(uuid)
+        let result = await db.getSensor(id)
         res.json(result)
     } catch (e) {
         console.log(e)
