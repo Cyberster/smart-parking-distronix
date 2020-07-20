@@ -161,13 +161,96 @@ GET /lot/:lot_name
 
 ```json
 {
-	"data":{
-		"id": 4,
-		"name": "L4",
-		"latitude": 15.321321,
-		"longitude": 12.456565,
-		"gateway_id": 3
-	},
+	"data":[
+		{
+			"id": 2,
+			"name": "B1",
+			"latitude": 15.121212,
+			"longitude": 12.454242,
+			"gateway_id": 1,
+			"x_coordinate": 12,
+			"y_coordinate": 10,
+			"sensor_id": 1,
+			"lot_id": 1
+		},
+		{
+			"id": 4,
+			"name": "B2",
+			"latitude": 15.121212,
+			"longitude": 12.454242,
+			"gateway_id": 1,
+			"x_coordinate": 13,
+			"y_coordinate": 11,
+			"sensor_id": 2,
+			"lot_id": 1
+		},
+		{
+			"id": 5,
+			"name": "B3",
+			"latitude": 15.121212,
+			"longitude": 12.454242,
+			"gateway_id": 1,
+			"x_coordinate": 13,
+			"y_coordinate": 11,
+			"sensor_id": 3,
+			"lot_id": 1
+		},
+		{
+			"id": 6,
+			"name": "B4",
+			"latitude": 15.121212,
+			"longitude": 12.454242,
+			"gateway_id": 1,
+			"x_coordinate": 15,
+			"y_coordinate": 13,
+			"sensor_id": 4,
+			"lot_id": 1
+		},
+		{
+			"id": 7,
+			"name": "B5",
+			"latitude": 15.121212,
+			"longitude": 12.454242,
+			"gateway_id": 1,
+			"x_coordinate": 16,
+			"y_coordinate": 14,
+			"sensor_id": 5,
+			"lot_id": 1
+		},
+		{
+			"id": 9,
+			"name": "B6",
+			"latitude": 15.121212,
+			"longitude": 12.454242,
+			"gateway_id": 1,
+			"x_coordinate": 17,
+			"y_coordinate": 15,
+			"sensor_id": 6,
+			"lot_id": 1
+		},
+		{
+			"id": 10,
+			"name": "B7",
+			"latitude": 15.121212,
+			"longitude": 12.454242,
+			"gateway_id": 1,
+			"x_coordinate": 18,
+			"y_coordinate": 16,
+			"sensor_id": 7,
+			"lot_id": 1
+		},
+		{
+			"id": 11,
+			"name": "B8",
+			"latitude": 15.121212,
+			"longitude": 12.454242,
+			"gateway_id": 1,
+			"x_coordinate": 19,
+			"y_coordinate": 17,
+			"sensor_id": 8,
+			"lot_id": 1
+		}
+	],
 	"status": "success"
 }
 ```
@@ -176,6 +259,7 @@ GET /lot/:lot_name
 
 ```json
 {
+	"data":[],
 	"status": "error"
 }
 ```

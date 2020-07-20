@@ -151,7 +151,7 @@ db.getLots = () => {
 // Get single lot details from database
 db.getLot = (name) => {
 	return new Promise((resolve, reject) => {
-		connPool.query('SELECT * FROM lot WHERE `name` = ?', name, (err, results) => {
+		connPool.query('SELECT * FROM lot l, bay b WHERE b.lot_id = l.id AND l.name = ?', name, (err, results) => {
 			result = {
 				data: [],
 				status: 'error'
@@ -162,8 +162,10 @@ db.getLot = (name) => {
 				return resolve(result)
 			}
 
-			result.data = results[0]
-			result.status = results.length > 0 ? 'success' : 'error';
+			if (results.length > 0) {
+				result.data = results
+				result.status = 'success'
+			}			
 
 			return resolve(result)
 		})
