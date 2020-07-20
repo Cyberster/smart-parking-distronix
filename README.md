@@ -76,9 +76,9 @@ Variables like listening port, mysql database credentials can be configured in `
 mysql -u root -p smart_parking_distronix < ./schema/smart_parking_distronix_mysql_create.sql
 ```
 
-### 3. Start Server
+### 3. Import Dependencies
 
-Use the following command to install foobar all required dependencies required for this project.
+Use the following command to install all dependencies required for this project.
 
 ```bash
 npm install
