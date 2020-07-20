@@ -1,3 +1,4 @@
+// Import required libraries
 const dotenv = require('dotenv');
 const mysql = require('mysql')
 
@@ -13,9 +14,11 @@ const connPool = mysql.createPool({
 	port: process.env.MYSQL_PORT
 })
 
+// Initialize database
 let db = {}
 
 
+// Add new sensor to the database
 db.addSensor = (uuid, is_occupied) => {
 	return new Promise((resolve, reject) => {
 		connPool.query('INSERT INTO sensor (`uuid`, `is_occupied`) VALUES (?, ?) ', [uuid, is_occupied], (err, results) => {
@@ -34,6 +37,7 @@ db.addSensor = (uuid, is_occupied) => {
 	})
 }
 
+// Update existing sensor details in the database
 db.updateSensor = (id, is_occupied) => {
 	return new Promise((resolve, reject) => {
 		connPool.query('UPDATE sensor SET `is_occupied` = ? WHERE `id` = ?', [is_occupied, id], (err, results) => {
@@ -53,6 +57,7 @@ db.updateSensor = (id, is_occupied) => {
 	})
 }
 
+// Get sensor details from database
 db.getSensor = (id) => {
 	return new Promise((resolve, reject) => {
 		connPool.query('SELECT `is_occupied` FROM `sensor` WHERE `id` = ?', [id], (err, results) => {
@@ -77,7 +82,7 @@ db.getSensor = (id) => {
 }
 
 
-
+// Add status to the database
 db.addStatus = (sensor_id, timestamp, is_occupied) => {
 	return new Promise((resolve, reject) => {
 		connPool.query('INSERT INTO status (`sensor_id`, `timestamp`, `is_occupied`) VALUES (?, ?, ?) ', 
@@ -98,6 +103,7 @@ db.addStatus = (sensor_id, timestamp, is_occupied) => {
 }
 
 
+// Add new lot to the database
 db.addLot = (name, latitude, longitude, gateway_id) => {
 	return new Promise((resolve, reject) => {
 		connPool.query('INSERT INTO `lot` (`name`, `latitude`, `longitude`, `gateway_id`) \
@@ -120,6 +126,7 @@ db.addLot = (name, latitude, longitude, gateway_id) => {
 	})
 }
 
+// Get all lot details from database
 db.getLots = () => {
 	return new Promise((resolve, reject) => {
 		connPool.query('SELECT * FROM lot', (err, results) => {
@@ -141,6 +148,7 @@ db.getLots = () => {
 	})
 }
 
+// Get single lot details from database
 db.getLot = (name) => {
 	return new Promise((resolve, reject) => {
 		connPool.query('SELECT * FROM lot WHERE `name` = ?', name, (err, results) => {
@@ -162,6 +170,7 @@ db.getLot = (name) => {
 	})
 }
 
+// Get bay details by global name
 db.getBayByGlobalName = (lot_name, bay_name) => {
 	return new Promise((resolve, reject) => {
 		connPool.query('SELECT * FROM lot l, bay b \
@@ -186,7 +195,7 @@ db.getBayByGlobalName = (lot_name, bay_name) => {
 }
 
 
-
+// Add new bay to the database
 db.addBay = (name, x_coordinate, y_coordinate, lot_id, sensor_id) => {
 	return new Promise((resolve, reject) => {
 		connPool.query('INSERT INTO `bay` (`name`, `x_coordinate`, `y_coordinate`, `lot_id`, `sensor_id`) \
@@ -208,6 +217,7 @@ db.addBay = (name, x_coordinate, y_coordinate, lot_id, sensor_id) => {
 	})
 }
 
+// Get single bay details from database
 db.getBay = (name) => {
 	return new Promise((resolve, reject) => {
 		connPool.query('SELECT * FROM bay WHERE `name` = ?', name, (err, results) => {
@@ -230,6 +240,5 @@ db.getBay = (name) => {
 }
 
 
-
-
+// Export the database
 module.exports = db

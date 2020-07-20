@@ -1,6 +1,8 @@
+// Import required libraries
 const express = require('express')
 const db = require('../db')
 
+// Get route instance
 const sensorRouter = express.Router()
 
 
@@ -52,4 +54,5 @@ sensorRouter.get('/get/:id', async (req, res, next) => {
 })
 
 
+// Export the route
 module.exports = sensorRouter

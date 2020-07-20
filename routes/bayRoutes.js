@@ -1,6 +1,8 @@
+// Import required libraries
 const express = require('express')
 const db = require('../db')
 
+// Get route instance
 const bayRouter = express.Router()
 
 
@@ -84,4 +86,5 @@ bayRouter.get('/:lot_name/:bay_name', async (req, res, next) => {
 })
 
 
+// Export the route
 module.exports = bayRouter

@@ -1,6 +1,8 @@
+// Import required libraries
 const express = require('express')
 const db = require('../db')
 
+// Get route instance
 const statusRouter = express.Router()
 
 
@@ -53,4 +55,5 @@ statusRouter.post('/', async (req, res, next) => {
 // })
 
 
+// Export the route
 module.exports = statusRouter

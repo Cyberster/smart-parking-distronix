@@ -1,6 +1,8 @@
+// Import required libraries
 const express = require('express')
 const db = require('../db')
 
+// Get route instance
 const lotRouter = express.Router()
 
 
@@ -67,4 +69,5 @@ lotRouter.get('/:name', async (req, res, next) => {
 })
 
 
+// Export the route
 module.exports = lotRouter
