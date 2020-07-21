@@ -83,7 +83,7 @@ Variables like listening port, mysql database credentials can be configured in `
 ### 2. Import MySQL Database
 
 ```mysql
-mysql -u root -p smart_parking_distronix < ./schema/smart_parking_distronix_mysql_create.sql
+mysql -u root -p smart_parking_distronix < ./schema/smart_parking_distronix.sql
 ```
 
 ### 3. Import Dependencies
@@ -99,7 +99,7 @@ npm install
 Start the server using the following command
 
 ```sh
-node index
+npm run start
 ```
 
 ## Application Routes
@@ -547,9 +547,10 @@ PUT /sensor/update
 
 id=0&is_occupied=1
 ```
-###### Success
 
 ##### *Example Response:*
+
+###### Success
 
 ```json
 {

@@ -4,6 +4,7 @@
   "description": "Smart Parking application for Distronix recruitment",
   "main": "index.js",
   "scripts": {
+    "start": "node index",
     "dev": "npx nodemon index.js -w index"
   },
   "keywords": [
