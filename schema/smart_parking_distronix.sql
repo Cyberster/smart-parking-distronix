@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 19, 2020 at 05:51 PM
+-- Generation Time: Jul 21, 2020 at 02:43 AM
 -- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.10
+-- PHP Version: 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -100,8 +100,7 @@ CREATE TABLE `lot` (
 INSERT INTO `lot` (`id`, `name`, `latitude`, `longitude`, `gateway_id`) VALUES
 (1, 'L1', '15.1212120', '12.4542420', 1),
 (2, 'L2', '15.3213210', '12.4565650', 2),
-(3, 'L3', '15.3213210', '12.4565650', 2),
-(4, 'L4', '15.3213210', '12.4565650', 3);
+(3, 'L3', '15.3213210', '12.4565650', 3);
 
 -- --------------------------------------------------------
 
@@ -122,7 +121,7 @@ CREATE TABLE `sensor` (
 INSERT INTO `sensor` (`id`, `uuid`, `is_occupied`) VALUES
 (1, '45e0c726-4d19-4029-902b-ece36bceb3c1', 0),
 (2, ' be4771a6-f402-4da1-9d36-a1b5fb028235', 1),
-(3, '12ae31c5-92d1-4e3c-b659-37f78452ea89', 0),
+(3, '12ae31c5-92d1-4e3c-b659-37f78452ea89', 1),
 (4, 'af11ddad-a8da-4feb-bb73-9c4d46074512', 0),
 (5, '3cdc13ce-e08f-4a85-823b-4a6e6ed5e382', 1),
 (6, '57834963-27c6-4c89-ba9c-de9efcd4b6dd', 0),
@@ -190,7 +189,7 @@ ALTER TABLE `gateway`
 ALTER TABLE `lot`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`),
-  ADD KEY `lot_fk0` (`gateway_id`);
+  ADD UNIQUE KEY `gateway_id` (`gateway_id`);
 
 --
 -- Indexes for table `sensor`
@@ -226,13 +225,13 @@ ALTER TABLE `gateway`
 -- AUTO_INCREMENT for table `lot`
 --
 ALTER TABLE `lot`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `sensor`
 --
 ALTER TABLE `sensor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `status`

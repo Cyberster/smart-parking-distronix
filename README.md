@@ -17,14 +17,14 @@ A smart parking application that shows the status of spots in a parking lot.
 
 ### Schema Simplified
 
-**lot** table
+**`lot`** table
 - `id` int unique AI PK
 - `name` (P1, P2, ...) unique secondary string
 - `latitude` double
 - `longitude` double
 - `gateway_id` int (foreign key, refers to gateway.id)
 
-**bay** table
+**`bay`** table
 - `id` int unique AI PK
 - `name` (B1, B2, ...) string
 - `x_coordinate` double
@@ -34,26 +34,29 @@ A smart parking application that shows the status of spots in a parking lot.
 
 (`name + lot_id` is unique, secondary)
 
-**sensor** table
+**`sensor`** table
 - `id` int unique AI PK
 - `uuid` unique secondary string 50
 - `is_occupied` boolean (refers to the current status)
 
-**gateway** table
+**`gateway`** table
 - `id` int unique AI PK
 - `uuid` unique secondary string 50
 
-**status** table
+**`status`** table
 - `id` int unique AI PK
 - `sensor_id` int (foreign key, refers to sensor.id)
 - `timestamp` timestamp
-- `is_occupied` boolean (refers to status @ certain timestamp)
+- `is_occupied` boolean (refers to status at certain timestamp)
 
 #### Entity Relationships
-* bay : lot => n : 1
-* lot : gateway => 1 : 1
-* bay : sensor => 1 : 1
-* sensor : status => 1 : n
+
+Entities | Relationship
+--- | ---
+bay : lot | n : 1
+lot : gateway | 1 : 1
+bay : sensor | 1 : 1
+sensor : status | 1 : n
 
 #### Note
 
@@ -62,9 +65,10 @@ A smart parking application that shows the status of spots in a parking lot.
 - If we store `occupancy_status` in the **sensor** table, it refers to the current status.
 - If not present in **status** table, we don't get status history. But it's ok as
 we're only dealing with the live occupancy staus.
-- `sensor.is_occupied` refers to the current status of the sensor.
-- `status.is_occupied` refers to status of the sensor at certain timestamp.
-- In the table **bay**, `name + lot_id` is unique.
+- `sensor.is_occupied` refers to the current/live status of a sensor.
+- `status.is_occupied` refers to status of a particular sensor at certain timestamp.
+- In the table **bay**, `name + lot_id` is UNIQUE.
+- In the table **lot**, `gateway_id` is UNIQUE.
 
 ### Relation Between Tables
 
@@ -86,7 +90,7 @@ mysql -u root -p smart_parking_distronix < ./schema/smart_parking_distronix_mysq
 
 Use the following command to install all dependencies required for this project.
 
-```bash
+```sh
 npm install
 ```
 
@@ -94,7 +98,7 @@ npm install
 
 Start the server using the following command
 
-```bash
+```sh
 node index
 ```
 
@@ -271,18 +275,19 @@ GET /bay/L1/B1
 
 ```json
 {
-	"data":{
-		"id": 15,
-		"name": "B1",
-		"latitude": 15.321321,
-		"longitude": 12.456565,
-		"gateway_id": 2,
-		"x_coordinate": 3,
-		"y_coordinate": 4,
-		"sensor_id": 9,
-		"lot_id": 2
-	},
-	"status": "success"
+    "data":{
+        "lot_id": 1,
+        "lot_name": "L1",
+        "latitude": 15.121212,
+        "longitude": 12.454242,
+        "gateway_id": 1,
+        "bay_id": 2,
+        "bay_name": "B1",
+        "x_coordinate": 12,
+        "y_coordinate": 10,
+        "sensor_id": 1
+    },
+    "status": "success"
 }
 ```
 

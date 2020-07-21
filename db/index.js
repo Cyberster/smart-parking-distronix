@@ -209,8 +209,10 @@ db.getLot = async (name) => {
 // Get bay details by global name
 db.getBayByGlobalName = (lot_name, bay_name) => {
 	return new Promise((resolve, reject) => {
-		connPool.query('SELECT * FROM lot l, bay b \
-						WHERE b.lot_id = l.id AND l.name = ? AND b.name = ? ', 
+		connPool.query('SELECT l.id AS lot_id, l.name AS lot_name, l.latitude, l.longitude, l.gateway_id, \
+							b.id AS bay_id, b.name AS bay_name, b.x_coordinate, b.y_coordinate, b.sensor_id\
+						FROM lot l, bay b \
+						WHERE b.lot_id = l.id AND l.name = ? AND b.name = ?', 
 						[lot_name, bay_name], (err, results) => {
 			result = {
 				data: [],
