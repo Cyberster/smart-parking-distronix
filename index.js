@@ -24,6 +24,18 @@ app.listen(process.env.PORT, () => {
 // Processing middlewares
 app.use(express.urlencoded({ extended: true })) // Required for accepting form data
 
+// Print request headers
+app.use('*', (req, res, next) => {
+    console.log('Request received:');
+    //console.log(JSON.stringify(req.headers));
+    
+    for (var key of Object.keys(req.headers)) {
+        console.log(key + ": " + req.headers[key])
+    }
+    
+    next()
+})
+
 app.use('/sensor', sensorRouter)
 app.use('/data', statusRouter)
 app.use('/lot', lotRouter)

@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 const mysql = require('mysql')
 
 // Initialize environment variables
-dotenv.config({ path: './config.env' });
+//dotenv.config({ path: '../config.env' });
 
 const connPool = mysql.createPool({
 	connectionLimit: process.env.MYSQL_CONN_LIMIT,

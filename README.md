@@ -14,7 +14,6 @@ A smart parking application that shows the status of spots in a parking lot.
 
 > [https://dbdesigner.page.link/tDqa6aHVUv2veaBw7](https://dbdesigner.page.link/tDqa6aHVUv2veaBw7)
 
-
 ### Schema Simplified
 
 **`lot`** table
@@ -76,17 +75,19 @@ we're only dealing with the live occupancy staus.
 
 ## Installation
 
-### 1. Configure Variables
+### In Regular Environment
 
-Variables like listening port, mysql database credentials can be configured in `config.env`
+#### 1. Configure Variables
 
-### 2. Import MySQL Database
+Variables like listening port, mysql database credentials can be configured in `./config.env`
+
+#### 2. Import MySQL Database
 
 ```mysql
 mysql -u root -p smart_parking_distronix < ./schema/smart_parking_distronix.sql
 ```
 
-### 3. Import Dependencies
+#### 3. Import Dependencies
 
 Use the following command to install all dependencies required for this project.
 
@@ -94,12 +95,42 @@ Use the following command to install all dependencies required for this project.
 npm install
 ```
 
-## Starting the Server
+#### 4. Starting the Server
 
 Start the server using the following command
 
 ```sh
 npm run start
+```
+
+### In Docker Environment
+
+#### 1. Configure Variables
+
+Variables like listening port, mysql database credentials can be configured in `./config.env`
+
+#### 2. Build and Run Docker Images
+
+```sh
+./docker-build.sh
+```
+
+**Note**: Wait for 15 seconds to get MySQL server started.
+
+#### 3. Manage Instances (Optional)
+
+##### 3.1. Start Instances
+
+```sh
+sudo docker start sp-mysql
+sudo docker start sp-node
+```
+
+##### 3.2. Stop Instances
+
+```sh
+sudo docker stop sp-mysql
+sudo docker stop sp-node
 ```
 
 ## Application Routes

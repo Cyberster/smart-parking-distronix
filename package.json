@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "dev": "npx nodemon index.js -w index"
+    "dev": "nodemon"
   },
   "keywords": [
     "smart",
@@ -17,7 +17,8 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.4"
   },
   "PORT": "8080"
 }
